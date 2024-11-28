@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  {
+    title: 'AI Agents & Automation',
+    description: 'Custom AI agents to automate your business processes and workflows, increasing efficiency and reducing costs.',
+    icon: '🤖'
+  },
+  {
+    title: 'AI Chatbots',
+    description: 'Intelligent chatbots for 24/7 customer support, lead generation, and automated customer service.',
+    icon: '💬'
+  },
+  {
+    title: 'Process Optimization',
+    description: 'AI-powered analysis and optimization of your business processes for maximum efficiency.',
+    icon: '📈'
+  },
+  {
+    title: 'Custom AI Solutions',
+    description: 'Tailored AI solutions designed specifically for your unique business needs and challenges.',
+    icon: '🎯'
+  }
+];
+---
+
+<Layout title="NeuDayAI - Leading the AI Revolution">
+  <main>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-primary/10 to-secondary/10">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 
+            class="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+            data-aos="fade-up"
+          >
+            Transform Your Business with <span class="text-primary">AI Innovation</span>
+          </h1>
+          <p 
+            class="text-xl text-gray-600 mb-8"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Harness the power of artificial intelligence to automate processes, enhance customer experiences, and drive growth.
+          </p>
+          <div 
+            class="flex flex-col sm:flex-row justify-center gap-4"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <a 
+              href="https://calendly.com/amarjeet-neudayai" 
+              target="_blank"
+              class="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors"
+            >
+              Book a Free Consultation
+            </a>
+            <a 
+              href="/services" 
+              class="bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-50 transition-colors border border-primary"
+            >
+              Explore Services
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <h2 
+          class="text-3xl md:text-4xl font-bold text-center mb-12"
+          data-aos="fade-up"
+        >
+          Our Services
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <ServiceCard 
+              title={service.title}
+              description={service.description}
+              icon={service.icon}
+              delay={index * 100}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 
+            class="text-3xl md:text-4xl font-bold mb-12"
+            data-aos="fade-up"
+          >
+            Why Choose NeuDayAI?
+          </h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div 
+              class="bg-white p-6 rounded-lg shadow-sm"
+              data-aos="fade-up"
+              data-aos-delay="0"
+            >
+              <div class="text-4xl mb-4">🎯</div>
+              <h3 class="text-xl font-semibold mb-2">Expertise</h3>
+              <p class="text-gray-600">Led by AI experts with extensive industry experience</p>
+            </div>
+            <div 
+              class="bg-white p-6 rounded-lg shadow-sm"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="text-4xl mb-4">💡</div>
+              <h3 class="text-xl font-semibold mb-2">Innovation</h3>
+              <p class="text-gray-600">Cutting-edge AI solutions tailored to your needs</p>
+            </div>
+            <div 
+              class="bg-white p-6 rounded-lg shadow-sm"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="text-4xl mb-4">📈</div>
+              <h3 class="text-xl font-semibold mb-2">Results</h3>
+              <p class="text-gray-600">Proven track record of delivering ROI</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white">
+      <div class="container mx-auto px-4">
+        <div 
+          class="max-w-3xl mx-auto text-center"
+          data-aos="fade-up"
+        >
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Transform Your Business?
+          </h2>
+          <p class="text-xl mb-8">
+            Schedule a free consultation to discuss how AI can revolutionize your operations.
+          </p>
+          <a 
+            href="https://calendly.com/amarjeet-neudayai" 
+            target="_blank"
+            class="inline-block bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition-colors"
+          >
+            Book Your Free Consultation
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

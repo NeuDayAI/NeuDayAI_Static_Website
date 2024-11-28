@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+
+const products = [
+  {
+    title: 'SmartGrade',
+    description: 'Revolutionary exam assessment system using state-of-the-art OCR technologies and LLM models trained on various academic subjects.',
+    image: '/images/smartgrade.jpg',
+    features: [
+      'Advanced OCR for handwriting recognition',
+      'Subject-specific LLM evaluation',
+      'Detailed feedback generation',
+      'Scalable for multiple institutions',
+      'Consistent grading standards'
+    ]
+  },
+  {
+    title: 'SmartAspirant',
+    description: 'Comprehensive AI system built specifically for UPSC aspirants in India, powered by LLMs trained on extensive UPSC preparation materials.',
+    image: '/images/smartaspirant.jpg',
+    features: [
+      'Interactive chat with specialized LLMs',
+      'Model answer generation',
+      'Real-time news tracking',
+      'Answer evaluation and feedback',
+      'Personalized study planning'
+    ]
+  }
+];
+---
+
+<Layout 
+  title="Our Products - NeuDayAI"
+  description="Discover NeuDayAI's innovative AI products - SmartGrade and SmartAspirant"
+>
+  <main class="pt-32">
+    <!-- Hero Section -->
+    <section class="py-20 relative">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/90 to-secondary/90 mix-blend-multiply"></div>
+      <div class="absolute inset-0">
+        <img 
+          src="/images/products-hero.jpg" 
+          alt="AI Products" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center relative">
+          <h1 
+            class="text-4xl md:text-5xl font-bold text-white mb-6"
+            data-aos="fade-up"
+          >
+            Our AI Products
+          </h1>
+          <p 
+            class="text-xl text-gray-100"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            Transforming education and learning with cutting-edge AI technology
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-20">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {products.map((product, index) => (
+            <ProductCard {...product} />
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-primary text-white">
+      <div class="container mx-auto px-4">
+        <div 
+          class="max-w-3xl mx-auto text-center"
+          data-aos="fade-up"
+        >
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Transform Your Operations?
+          </h2>
+          <p class="text-xl mb-8">
+            Get in touch to learn more about our products and how they can benefit your organization.
+          </p>
+          <a 
+            href="https://calendly.com/amarjeet-neudayai" 
+            target="_blank"
+            class="inline-block bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition-colors"
+          >
+            Schedule a Demo
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
