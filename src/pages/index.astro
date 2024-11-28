@@ -6,22 +6,22 @@ const services = [
   {
     title: 'AI Agents & Automation',
     description: 'Custom AI agents to automate your business processes and workflows, increasing efficiency and reducing costs.',
-    icon: '🤖'
+    image: '/images/ai-agents.png'
   },
   {
     title: 'AI Chatbots',
     description: 'Intelligent chatbots for 24/7 customer support, lead generation, and automated customer service.',
-    icon: '💬'
+    image: '/images/ai-chatbots.png'
   },
   {
     title: 'Process Optimization',
     description: 'AI-powered analysis and optimization of your business processes for maximum efficiency.',
-    icon: '📈'
+    image: '/images/ai-process-optimization.png'
   },
   {
     title: 'Custom AI Solutions',
     description: 'Tailored AI solutions designed specifically for your unique business needs and challenges.',
-    icon: '🎯'
+    image: '/images/ai-custom-solutions.jpeg'
   }
 ];
 ---
@@ -29,17 +29,23 @@ const services = [
 <Layout title="NeuDayAI - Leading the AI Revolution">
   <main>
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 bg-gradient-to-br from-primary/10 to-secondary/10">
-      <div class="container mx-auto px-4">
+    <section 
+      class="pt-32 pb-20 bg-black/50 relative"
+      style="background-image: url('/images/hero1.jpeg'); background-size: cover; background-position: center;"
+    >
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="relative z-10"></div>
+
+    <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto text-center">
           <h1 
-            class="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+            class="text-4xl md:text-6xl font-bold text-gray-100 mb-6"
             data-aos="fade-up"
           >
-            Transform Your Business with <span class="text-primary">AI Innovation</span>
+            Transform Your Business with <span class="font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">AI Innovation</span>
           </h1>
           <p 
-            class="text-xl text-gray-600 mb-8"
+            class="text-xl text-gray-100 mb-8"
             data-aos="fade-up"
             data-aos-delay="100"
           >
@@ -66,6 +72,7 @@ const services = [
           </div>
         </div>
       </div>
+    </div>
     </section>
 
     <!-- Services Section -->
@@ -82,7 +89,7 @@ const services = [
             <ServiceCard 
               title={service.title}
               description={service.description}
-              icon={service.icon}
+              image={service.image}
               delay={index * 100}
             />
           ))}
