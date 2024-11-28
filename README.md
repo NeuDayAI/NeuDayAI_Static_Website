@@ -2,10 +2,6 @@
 
 Welcome to the NeuDayAI Static Website repository. This project is built using Astro, a modern static site generator.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
 ## About NeuDayAI
 
 NeuDayAI is dedicated to providing cutting-edge AI solutions to enhance productivity and innovation. Our static website serves as a platform to showcase our projects, share updates, and provide resources for the community. Please note that the website is currently under development, and new features and content are being added regularly.
