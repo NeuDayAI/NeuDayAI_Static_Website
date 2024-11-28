@@ -5,7 +5,8 @@ const team = [
   {
     name: 'Amarjeet Kawathe',
     role: 'Founder & CEO',
-    bio: 'MSc. AI (University of Liverpool). An engineer turned entrepreneur who left his 80LPA job in Europe and returned to India, passionate about AI and determined not to miss the AI revolution. With extensive experience in developing AI solutions, Amarjeet leads our team in creating innovative AI products that transform businesses.',
+    edu: 'MSc. AI (University of Liverpool)',
+    bio: 'An engineer turned entrepreneur who left his high paying job in Europe and returned to India, passionate about AI and determined not to miss the AI revolution. With extensive experience in developing AI solutions, Amarjeet leads our team in creating innovative AI products that transform businesses.',
     linkedin: 'https://www.linkedin.com/in/akawathe/'
   }
 ];
@@ -60,14 +61,53 @@ const team = [
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            To democratize AI technology and help businesses of all sizes leverage its power to achieve unprecedented growth and efficiency.
+            To democratize AI technology and help businesses of all sizes leverage its power to achieve unprecedented growth and efficiency. 
+           </p>
+           <p 
+            class="text-lg text-gray-600 mb-8 text-center"
+            data-aos="fade-up"
+            data-aos-delay="100">
+            At NeuDayAI, we are revolutionizing the way businesses and educational institutions leverage Artificial Intelligence to drive efficiency, innovation, and growth. As an emerging AI-driven company, we specialize in crafting cutting-edge AI services and products designed to automate processes, enhance productivity, and deliver actionable insights.
+          </p> 
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- Vision Section -->
     <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <h2 
+            class="text-3xl font-bold mb-6 text-center"
+            data-aos="fade-up"
+          >
+            Our Vision
+          </h2>
+          <p 
+            class="text-lg text-gray-600 mb-8 text-center"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+          Our journey began with a bold vision: to lead India's AI revolution by redefining how knowledge is imparted, acquired, and evaluated. Whether it's empowering organizations with custom AI solutions like intelligent chatbots, co-pilots, and data-driven insights, or reshaping education through automated grading and feedback systems, NeuDayAI is at the forefront of transformative AI innovation.
+          </p>
+          <p 
+          class="text-lg text-gray-600 mb-8 text-center"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          Our team of passionate technologists and innovators thrives on solving complex challenges. We build AI products that are not only technically robust but also aligned with our commitment to fairness, privacy, and usability.
+        </p>
+        <p 
+          class="text-lg text-gray-600 mb-8 text-center"
+          data-aos="fade-up"
+          data-aos-delay="100">
+          Join us as we create AI solutions that empower businesses, and inspire the next wave of innovation. Together, we're making every day a new day with AI!
+        </p>
+        </div>
+      </div>
+    <!-- Team Section -->
+    <section class="py-20 bg-gray-50 hidden">
       <div class="container mx-auto px-4">
         <h2 
           class="text-3xl font-bold mb-12 text-center"
@@ -87,6 +127,7 @@ const team = [
                 <div>
                   <h3 class="text-2xl font-semibold mb-2">{member.name}</h3>
                   <p class="text-primary font-medium mb-4">{member.role}</p>
+                  <p class="text-primary font-medium mb-4">{member.edu}</p>
                   <p class="text-gray-600 mb-4">{member.bio}</p>
                   <a 
                     href={member.linkedin}
