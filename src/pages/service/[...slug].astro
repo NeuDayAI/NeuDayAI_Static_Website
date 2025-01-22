@@ -11,7 +11,7 @@ export function getStaticPaths() {
 }
 
 const { service } = Astro.props;
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/$/, '');
 ---
 
 <Layout 
