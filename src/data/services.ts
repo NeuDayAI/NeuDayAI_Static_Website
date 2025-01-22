@@ -75,21 +75,6 @@ export const services = [
     ]
   },
   {
-    title: 'Workflow Automation',
-    description: 'Eliminate repetitive tasks and free up your team for high-value activities. Our workflow automation services streamline your business processes, ensuring faster turnarounds, fewer errors, and improved productivity. Focus on growing your business while automation handles the mundane.',
-    image: '/images/ai-process-optimization.png',
-    features: [
-      'Process Analysis',
-      'Custom Workflow Design',
-      'Integration with Existing Tools',
-      'Error Detection & Handling',
-      'Performance Monitoring',
-      'Automated Reporting',
-      'Scalable Architecture',
-      'Real-time Analytics'
-    ]
-  },
-  {
     title: 'Document Processing',
     description: 'Transform piles of paperwork into actionable insights. Our AI-powered document processing solutions extract, organize, and analyze data from invoices, contracts, or reports. Save time, reduce errors, and keep your operations running smoothly.',
     image: '/images/ai-doc-processing.jpg',
@@ -102,6 +87,21 @@ export const services = [
       'Searchable Archives',
       'Compliance Checking',
       'Batch Processing'
+    ]
+  },
+  {
+    title: 'Workflow Automation',
+    description: 'Eliminate repetitive tasks and free up your team for high-value activities. Our workflow automation services streamline your business processes, ensuring faster turnarounds, fewer errors, and improved productivity. Focus on growing your business while automation handles the mundane.',
+    image: '/images/ai-process-optimization.png',
+    features: [
+      'Process Analysis',
+      'Custom Workflow Design',
+      'Integration with Existing Tools',
+      'Error Detection & Handling',
+      'Performance Monitoring',
+      'Automated Reporting',
+      'Scalable Architecture',
+      'Real-time Analytics'
     ]
   },
   {
