@@ -1,5 +1,20 @@
 export const services = [
   {
+    title: 'AI Agents & Automation',
+    description: 'Custom AI agents to automate your business processes and workflows, increasing efficiency and reducing costs. These agents can adapt to various operational needs and seamlessly integrate with your existing systems. Empower your team to focus on strategic tasks while AI handles routine operations',
+    image: '/images/ai-agents.png',
+    features: [
+      'Process Automation',
+      'Workflow Optimization',
+      'Cost Reduction',
+      'Efficiency Improvement',
+      'Scalable Solutions',
+      'Integration with Existing Systems',
+      'Real-time Monitoring',
+      'Advanced Analytics'
+    ]
+  },
+  {
     title: 'AI Consulting',
     description: 'Strategic guidance on implementing AI solutions tailored to your business needs. Our expert consultants help you identify opportunities, plan implementation, and maximize ROI from AI investments.',
     image: '/images/ai-consulting.jpg',
@@ -15,48 +30,18 @@ export const services = [
     ]
   },
   {
-    title: 'Custom AI Development',
-    description: 'Bespoke AI solutions designed and developed for your specific requirements. From machine learning models to complete AI systems, we build solutions that drive real business value.',
-    image: '/images/ai-development.jpg',
+    title: 'AI-Driven Insights',
+    description: 'Make smarter decisions, faster. We leverage AI to analyze your business data and deliver actionable insights, helping you identify trends, optimize operations, and uncover new opportunities. Gain a competitive edge with data-driven strategies.',
+    image: '/images/ai-data-insights.jpg',
     features: [
-      'Machine Learning Models',
-      'Natural Language Processing',
-      'Computer Vision Solutions',
       'Predictive Analytics',
-      'Custom Algorithm Development',
-      'Model Training & Optimization',
-      'AI Pipeline Development',
-      'Performance Monitoring'
-    ]
-  },
-  {
-    title: 'AI Integration',
-    description: 'Seamlessly integrate AI capabilities into your existing systems and workflows. We ensure your AI solutions work harmoniously with your current technology stack.',
-    image: '/images/ai-integration.jpg',
-    features: [
-      'API Development',
-      'System Integration',
-      'Legacy System Modernization',
-      'Cloud Deployment',
-      'Data Pipeline Setup',
-      'Security Implementation',
-      'Performance Optimization',
-      'Scalability Planning'
-    ]
-  },
-  {
-    title: 'AI Training & Support',
-    description: 'Comprehensive training and ongoing support for your AI implementations. We ensure your team is equipped to maximize the value of your AI solutions.',
-    image: '/images/ai-training.jpg',
-    features: [
-      'Team Training',
-      'Documentation',
-      'Maintenance',
-      '24/7 Support',
-      'Performance Monitoring',
-      'System Updates',
-      'Best Practices Training',
-      'Troubleshooting Support'
+      'Trend Analysis',
+      'Custom Dashboards',
+      'Real-time Monitoring',
+      'Anomaly Detection',
+      'Performance Metrics',
+      'Competitive Analysis',
+      'Strategic Recommendations'
     ]
   },
   {
@@ -72,21 +57,6 @@ export const services = [
       'Semantic Understanding',
       'Multi-format Support',
       'Automated Indexing'
-    ]
-  },
-  {
-    title: 'End-to-End Lead Generation',
-    description: 'Say goodbye to chasing cold leads and hello to a steady flow of qualified prospects. From crafting personalized cold outreach campaigns to delivering warm, ready-to-buy leads, we handle the entire lead generation process.',
-    image: '/images/ai-leads.jpg',
-    features: [
-      'Personalized Outreach',
-      'Lead Qualification',
-      'Pipeline Management',
-      'Performance Analytics',
-      'Automated Follow-ups',
-      'Lead Scoring',
-      'Market Segmentation',
-      'Campaign Optimization'
     ]
   },
   {
@@ -122,7 +92,7 @@ export const services = [
   {
     title: 'Document Processing',
     description: 'Transform piles of paperwork into actionable insights. Our AI-powered document processing solutions extract, organize, and analyze data from invoices, contracts, or reports. Save time, reduce errors, and keep your operations running smoothly.',
-    image: '/images/ai-custom-solutions.jpeg',
+    image: '/images/ai-doc-processing.jpg',
     features: [
       'OCR Technology',
       'Data Extraction',
@@ -135,33 +105,33 @@ export const services = [
     ]
   },
   {
-    title: 'AI-Driven Insights',
-    description: 'Make smarter decisions, faster. We leverage AI to analyze your business data and deliver actionable insights, helping you identify trends, optimize operations, and uncover new opportunities. Gain a competitive edge with data-driven strategies.',
+    title: 'Custom AI Development',
+    description: 'Bespoke AI solutions designed and developed for your specific requirements. From machine learning models to complete AI systems, we build solutions that drive real business value.',
     image: '/images/ai-development.jpg',
     features: [
+      'Machine Learning Models',
+      'Natural Language Processing',
+      'Computer Vision Solutions',
       'Predictive Analytics',
-      'Trend Analysis',
-      'Custom Dashboards',
-      'Real-time Monitoring',
-      'Anomaly Detection',
-      'Performance Metrics',
-      'Competitive Analysis',
-      'Strategic Recommendations'
+      'Custom Algorithm Development',
+      'Model Training & Optimization',
+      'AI Pipeline Development',
+      'Performance Monitoring'
     ]
   },
   {
-    title: 'Customer Personalization',
-    description: 'Deliver experiences your customers will remember. Using AI, we help you personalize customer journeys at scale - tailored recommendations, targeted messaging, and custom offers that drive loyalty and revenue.',
-    image: '/images/ai-integration.jpg',
+    title: 'AI Training & Support',
+    description: 'Comprehensive training and ongoing support for your AI implementations. We ensure your team is equipped to maximize the value of your AI solutions.',
+    image: '/images/ai-training.jpg',
     features: [
-      'Behavioral Analysis',
-      'Dynamic Content',
-      'Recommendation Engine',
-      'A/B Testing',
-      'Customer Segmentation',
-      'Journey Mapping',
-      'Personalized Messaging',
-      'Conversion Optimization'
+      'Team Training',
+      'Documentation',
+      'Maintenance',
+      '24/7 Support',
+      'Performance Monitoring',
+      'System Updates',
+      'Best Practices Training',
+      'Troubleshooting Support'
     ]
-  }
+  },
 ];
