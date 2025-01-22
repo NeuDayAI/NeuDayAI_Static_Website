@@ -1,53 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
-
-const services = [
-  {
-    title: 'AI Consulting',
-    description: 'Strategic guidance on implementing AI solutions tailored to your business needs.',
-    image: '/images/ai-consulting.jpg',
-    features: [
-      'AI Readiness Assessment',
-      'Technology Stack Planning',
-      'Implementation Roadmap',
-      'ROI Analysis'
-    ]
-  },
-  {
-    title: 'Custom AI Development',
-    description: 'Bespoke AI solutions designed and developed for your specific requirements.',
-    image: '/images/ai-development.jpg',
-    features: [
-      'Machine Learning Models',
-      'Natural Language Processing',
-      'Computer Vision Solutions',
-      'Predictive Analytics'
-    ]
-  },
-  {
-    title: 'AI Integration',
-    description: 'Seamlessly integrate AI capabilities into your existing systems and workflows.',
-    image: '/images/ai-integration.jpg',
-    features: [
-      'API Development',
-      'System Integration',
-      'Legacy System Modernization',
-      'Cloud Deployment'
-    ]
-  },
-  {
-    title: 'AI Training & Support',
-    description: 'Comprehensive training and ongoing support for your AI implementations.',
-    image: '/images/ai-training.jpg',
-    features: [
-      'Team Training',
-      'Documentation',
-      'Maintenance',
-      '24/7 Support'
-    ]
-  }
-];
+import { services } from '../data/services';
 ---
 
 <Layout 
@@ -84,7 +38,7 @@ const services = [
     <!-- Services Grid -->
     <section class="py-20">
       <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <ServiceCard 
               title={service.title}

@@ -1,0 +1,279 @@
+---
+import { getCountries, getCountryCallingCode } from 'libphonenumber-js';
+
+// Sort countries with India first, then alphabetically
+const countries = getCountries()
+.map(country => ({
+  code: country,
+  dialCode: getCountryCallingCode(country),
+  flag: `https://flagcdn.com/${country.toLowerCase()}.svg`
+}))
+.sort((a, b) => {
+  if (a.code === 'IN') return -1;
+  if (b.code === 'IN') return 1;
+  return a.code.localeCompare(b.code);
+});
+---
+
+<form 
+  class="p-8 rounded-lg shadow-sm" style="background-color: #ffffff;"
+  data-aos="fade-up"
+  data-aos-delay="200"
+>
+  <div class="space-y-6">
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+        placeholder="John Doe"
+      />
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+          Email Address
+          <span class="text-gray-500">(Email or Phone Required)</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+          placeholder="john@example.com"
+        />
+      </div>
+
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+          Phone Number
+          <span class="text-gray-500">(Email or Phone Required)</span>
+        </label>
+        <div class="flex">
+          <div class="relative inline-block" style="min-width: 120px;">
+            <button
+              type="button"
+              id="country-code"
+              class="h-full w-full py-2 pl-3 pr-8 border border-r-0 border-gray-300 rounded-l-lg focus:ring-2 focus:ring-primary focus:border-primary bg-white flex items-center gap-2 text-left"
+            >
+              <img src="https://flagcdn.com/in.svg" alt="IN" class="w-4 h-4" id="selected-flag" />
+              <span id="selected-code">+91</span>
+            </button>
+            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <div 
+              id="country-dropdown" 
+              class="absolute z-10 w-64 mt-1 bg-white border border-gray-300 rounded-lg shadow-lg hidden max-h-60 overflow-y-auto"
+            >
+              <div class="p-2">
+                <input 
+                  type="text" 
+                  id="country-search"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                  placeholder="Search countries..."
+                />
+              </div>
+              <div id="countries-list" class="py-2">
+                {countries.map(country => (
+                  <button
+                    type="button"
+                    class="w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center gap-2"
+                    data-dial-code={country.dialCode}
+                    data-country={country.code}
+                  >
+                    <img 
+                      src={country.flag} 
+                      alt={country.code}
+                      class="w-4 h-4"
+                    />
+                    <span>{country.code}</span>
+                    <span class="text-gray-500">+{country.dialCode}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+            <input 
+              type="hidden" 
+              id="selected-country-code" 
+              name="countryCode" 
+              value="91"
+            />
+          </div>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="flex-1 px-4 py-2 border border-l-0 border-gray-300 rounded-r-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+            placeholder="(555) 123-4567"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company Name *</label>
+      <input
+        type="text"
+        id="company"
+        name="company"
+        required
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+        placeholder="Your Company Ltd."
+      />
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        required
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+        placeholder="Tell us about your project or requirements..."
+      ></textarea>
+    </div>
+
+    <div class="text-sm text-gray-500">* Required fields</div>
+
+    <button
+      type="submit"
+      id="submit-button"
+      disabled
+      class="w-full bg-primary text-white px-6 py-3 rounded-full transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary/90"
+    >
+      <span>Send Message</span>
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </button>
+  </div>
+</form>
+
+<script>
+  import { parsePhoneNumber, AsYouType } from 'libphonenumber-js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form');
+    const emailInput = document.getElementById('email') as HTMLInputElement;
+    const countryCodeBtn = document.getElementById('country-code') as HTMLButtonElement;
+    const countryDropdown = document.getElementById('country-dropdown') as HTMLDivElement;
+    const countrySearch = document.getElementById('country-search') as HTMLInputElement;
+    const countriesList = document.getElementById('countries-list') as HTMLDivElement;
+    const selectedFlag = document.getElementById('selected-flag') as HTMLImageElement;
+    const selectedCode = document.getElementById('selected-code') as HTMLSpanElement;
+    const selectedCountryCode = document.getElementById('selected-country-code') as HTMLInputElement;
+    const phoneInput = document.getElementById('phone') as HTMLInputElement;
+    const nameInput = document.getElementById('name') as HTMLInputElement;
+    const companyInput = document.getElementById('company') as HTMLInputElement;
+    const messageInput = document.getElementById('message') as HTMLInputElement;
+    const submitButton = document.getElementById('submit-button') as HTMLButtonElement;
+
+    // Toggle dropdown
+    countryCodeBtn.addEventListener('click', () => {
+      countryDropdown.classList.toggle('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!countryCodeBtn.contains(e.target as Node) && 
+          !countryDropdown.contains(e.target as Node)) {
+        countryDropdown.classList.add('hidden');
+      }
+    });
+
+    // Search functionality
+    countrySearch.addEventListener('input', (e) => {
+      const searchTerm = (e.target as HTMLInputElement).value.toLowerCase();
+      const countryButtons = countriesList.querySelectorAll('button');
+      
+      countryButtons.forEach(button => {
+        const country = button.getAttribute('data-country')?.toLowerCase();
+        const dialCode = button.getAttribute('data-dial-code');
+        const shouldShow = country?.includes(searchTerm) || 
+                          dialCode?.includes(searchTerm);
+        button.style.display = shouldShow ? 'flex' : 'none';
+      });
+    });
+
+    // Handle country selection
+    countriesList.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', () => {
+        const country = button.getAttribute('data-country')?.toLowerCase();
+        const dialCode = button.getAttribute('data-dial-code');
+        
+        if (country && dialCode) {
+          selectedFlag.src = `https://flagcdn.com/${country}.svg`;
+          selectedFlag.alt = country.toUpperCase();
+          selectedCode.textContent = `+${dialCode}`;
+          selectedCountryCode.value = dialCode;
+          countryDropdown.classList.add('hidden');
+          
+          // Reformat phone number for new country
+          if (phoneInput.value) {
+            const formatter = new AsYouType(country.toUpperCase());
+            phoneInput.value = formatter.input(phoneInput.value);
+          }
+        }
+      });
+    });
+
+    // Format phone number as user types
+    phoneInput.addEventListener('input', (e) => {
+      const target = e.target as HTMLInputElement;
+      const selectedCountry = selectedFlag.alt || 'IN';
+      const formatter = new AsYouType(selectedCountry);
+      target.value = formatter.input(target.value);
+    });
+
+    function validateForm() {
+      // Check required fields
+      const hasName = nameInput.value.trim() !== '';
+      const hasCompany = companyInput.value.trim() !== '';
+      const hasMessage = messageInput.value.trim() !== '';
+      const hasEmail = emailInput.value.trim() !== '';
+      const hasPhone = phoneInput.value.trim() !== '' && selectedCountryCode.value !== '';
+      
+      // Enable submit button only if all required fields are filled
+      submitButton.disabled = !hasName || !hasCompany || !hasMessage || (!hasEmail && !hasPhone);
+      
+      // Make either email or phone required
+      emailInput.required = !hasPhone;
+      phoneInput.required = !hasEmail;
+    }
+
+    // Add event listeners
+    const inputs = [nameInput, emailInput, phoneInput, companyInput, messageInput];
+    inputs.forEach(input => {
+      input.addEventListener('input', validateForm);
+    });
+
+    // Format full phone number on form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (phoneInput.value) {
+        const fullNumber = `+${selectedCountryCode.value}${phoneInput.value.replace(/\D/g, '')}`;
+        try {
+          const phoneNumber = parsePhoneNumber(fullNumber);
+          if (phoneNumber.isValid()) {
+            phoneInput.value = phoneNumber.formatInternational();
+          }
+        } catch (error) {
+          console.error('Invalid phone number');
+        }
+      }
+      // Continue with form submission
+      form.submit();
+    });
+
+    // Initial validation
+    validateForm();
+  });
+</script>

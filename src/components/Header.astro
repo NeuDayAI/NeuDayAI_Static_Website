@@ -8,25 +8,29 @@ const navItems = [
 ];
 ---
 
-<header class="fixed w-full bg-white shadow-sm z-50">
+<header class="fixed w-full shadow-sm z-50 transition-all duration-300" style="background-color: #ffffff;">
   <div class="container mx-auto px-4 py-4">
     <nav class="flex items-center justify-between">
       <a href="/" class="flex items-center space-x-2">
-        <img src="/images/logo-horizontal-light.svg" alt="NeuDayAI Logo" class="h-14" />
+        <img 
+          src="/images/logo-horizontal-light.svg" 
+          alt="NeuDayAI Logo" 
+          class="h-14 rounded-lg p-1" 
+        />
       </a>
       
       <div class="hidden md:flex items-center space-x-8">
         {navItems.map(item => (
-          <a href={item.path} class="text-gray-700 hover:text-primary transition-colors">
-            {item.name}
+          <a href={item.path} class="text-gray-800 hover:text-primary transition-colors">
+            <span class="font-medium">{item.name}</span>
           </a>
         ))}
         <a 
           href="https://calendly.com/amarjeet-neudayai" 
           target="_blank"
-          class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors"
+          class="bg-primary text-white px-6 py-2.5 rounded-full hover:bg-primary/90 transition-all transform hover:scale-105 hover:shadow-lg font-medium"
         >
-          Book a call
+          Book a Call Now
         </a>
       </div>
 
@@ -40,10 +44,10 @@ const navItems = [
 </header>
 
 <div class="hidden fixed inset-0 bg-black bg-opacity-50 z-40" id="mobile-menu-overlay">
-  <div class="bg-white w-64 h-full">
+  <div class="w-64 h-full" style="background-color: #ffffff;">
     <div class="p-4 space-y-4">
       {navItems.map(item => (
-        <a href={item.path} class="block text-gray-700 hover:text-primary transition-colors">
+        <a href={item.path} class="block text-gray-800 hover:text-primary transition-colors">
           {item.name}
         </a>
       ))}
@@ -52,7 +56,7 @@ const navItems = [
         target="_blank"
         class="block bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors text-center"
       >
-        Book a Call Now
+        Book a Call
       </a>
     </div>
   </div>

@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { services } from '../../data/services';
+
+export function getStaticPaths() {
+  return services.map(service => ({
+    params: { slug: service.title.toLowerCase().replace(/\s+/g, '-') },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<Layout 
+  title={`${service.title} - NeuDayAI Services`}
+  description={service.description}
+>
+  <main class="pt-32">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto">
+        <!-- Side Navigation -->
+        <div class="md:w-1/4">
+          <div class="bg-white rounded-lg shadow-sm p-6 sticky top-32">
+            <h2 class="text-lg font-semibold mb-4">Our Services</h2>
+            <nav class="space-y-2">
+              {services.map(item => {
+                const itemPath = `/service/${item.title.toLowerCase().replace(/\s+/g, '-')}`;
+                const isActive = currentPath === itemPath;
+                return (
+                  <a
+                    href={itemPath}
+                    class:list={[
+                      'block px-4 py-2 rounded-lg transition-colors',
+                      {
+                        'bg-primary text-white': isActive,
+                        'hover:bg-gray-100': !isActive
+                      }
+                    ]}
+                  >
+                    {item.title}
+                  </a>
+                );
+              })}
+            </nav>
+          </div>
+        </div>
+
+        <!-- Service Details -->
+        <div class="md:w-3/4">
+          <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="h-64 overflow-hidden">
+              <img 
+                src={service.image} 
+                alt={service.title}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-8">
+              <h1 class="text-3xl font-bold mb-6">{service.title}</h1>
+              <p class="text-lg text-gray-600 mb-8">{service.description}</p>
+
+              <h2 class="text-2xl font-semibold mb-6">Key Features</h2>
+              <div class="grid md:grid-cols-2 gap-4 mb-8">
+                {service.features.map(feature => (
+                  <div class="flex items-center space-x-3">
+                    <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">{feature}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div class="bg-gray-50 -mx-8 -mb-8 p-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                  <div>
+                    <h3 class="text-xl font-semibold mb-2">Ready to get started?</h3>
+                    <p class="text-gray-600">Schedule a consultation to learn more about our {service.title} service.</p>
+                  </div>
+                  <a 
+                    href="https://calendly.com/amarjeet-neudayai" 
+                    target="_blank"
+                    class="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors whitespace-nowrap"
+                  >
+                    Book a Consultation
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
