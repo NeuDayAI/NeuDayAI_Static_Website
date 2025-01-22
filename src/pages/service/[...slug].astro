@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { services } from '../../data/services';
 
+
 export function getStaticPaths() {
   return services.map(service => ({
     params: { slug: service.title.toLowerCase().replace(/\s+/g, '-') },
@@ -28,9 +29,12 @@ const currentPath = Astro.url.pathname;
               {services.map(item => {
                 const itemPath = `/service/${item.title.toLowerCase().replace(/\s+/g, '-')}`;
                 const isActive = currentPath === itemPath;
+                
                 return (
                   <a
                     href={itemPath}
+                    data-currentPath={currentPath}
+
                     class:list={[
                       'block px-4 py-2 rounded-lg transition-colors',
                       {
