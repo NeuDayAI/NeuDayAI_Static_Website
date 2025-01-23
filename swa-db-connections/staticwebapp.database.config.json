@@ -5,7 +5,8 @@
       "options": {
         "set-session-context": false 
       },
-      "connection-string": "Driver={ODBC Driver 18 for SQL Server};Server=tcp:instagarde.database.windows.net,1433;Database=instagrade-db;Uid=instagrade-sql-admin;Pwd={your_password_here};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+
+      "connection-string": "@env('DATABASE_CONNECTION_STRING')"
     },
     "runtime": {
       "rest": {
@@ -34,7 +35,7 @@
         "permissions": [
           {
             "actions": ["create", "read", "update", "delete"],
-            "role": "admin"
+            "role": "anonymous"
           }
         ]
       }
