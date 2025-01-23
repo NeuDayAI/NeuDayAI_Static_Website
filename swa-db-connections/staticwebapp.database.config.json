@@ -30,7 +30,7 @@
       }
     },
     "entities": {
-      "Person": {
+      "leads": {
         "source": "dbo.sales_leads",   
         "permissions": [
           {
