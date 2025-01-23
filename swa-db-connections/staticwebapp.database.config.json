@@ -20,7 +20,7 @@
       "host": {
         "mode": "production",
         "cors": {
-          "origins": ["http://localhost:4322"],
+          "origins": ["http://localhost:4322", "https://*.azurestaticapps.net", "http://localhost:4280"],
           "allow-credentials": false
         },
         "authentication": {
@@ -30,11 +30,11 @@
     },
     "entities": {
       "Person": {
-        "source": "dbo.sales_leads",
+        "source": "dbo.sales_leads",   
         "permissions": [
           {
             "actions": ["create", "read", "update", "delete"],
-            "role": "anonymous"
+            "role": "admin"
           }
         ]
       }
