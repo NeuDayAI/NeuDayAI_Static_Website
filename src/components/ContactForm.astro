@@ -279,6 +279,7 @@ const countries = getCountries()
       };
 
       try {
+        // to run the following call locally,use base url as localhost://4280
         const response = await fetch('/data-api/rest/leads', {
           method: 'POST',
           headers: {
