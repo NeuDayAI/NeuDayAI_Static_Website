@@ -1,17 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// SEO metadata
+const title = "Privacy Policy - NeuDayAI | How We Protect Your Data";
+const description = "Learn how NeuDayAI collects, uses, and protects your personal information. Our privacy policy explains your rights and choices regarding your data.";
+const keywords = ["Privacy Policy", "NeuDayAI Privacy", "Data Protection", "Personal Information", "Privacy Rights", "Cookie Policy", "Information Security"];
 ---
 
 <Layout 
-  title="Privacy Policy - NeuDayAI"
-  description="NeuDayAI Privacy Policy"
+  title={title}
+  description={description}
+  keywords={keywords}
+  pageType="article"
 >
   <main class="pt-32">
-    <section class="py-20">
+    <section class="py-20" itemscope itemtype="https://schema.org/WebPage">
       <div class="container mx-auto px-4 max-w-3xl">
-        <h1 class="text-3xl md:text-4xl font-bold mb-8">Privacy Policy</h1>
+        <h1 class="text-3xl md:text-4xl font-bold mb-8" itemprop="headline">Privacy Policy</h1>
         
-        <div class="prose lg:prose-lg">
+        <div class="prose lg:prose-lg" itemprop="mainContentOfPage">
           <p>Effective Date: {new Date().toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numeric'})}</p>
           
           <p>This Privacy Policy describes how NeuDayAI Technologies Pvt. Ltd. ("NeuDayAI", "we", "us", or "our") collects, uses, and discloses your information when you use our website, services, or otherwise interact with us. We are committed to protecting your privacy and ensuring the security of your personal information.</p>
@@ -108,4 +115,42 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </section>
   </main>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "h3"]
+      },
+      "name": "Privacy Policy - NeuDayAI",
+      "description": "Learn how NeuDayAI collects, uses, and protects your personal information.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "NeuDayAI",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.neudayai.com/images/logo-horizontal-light.svg"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.neudayai.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Privacy Policy",
+            "item": "https://www.neudayai.com/privacy"
+          }
+        ]
+      }
+    }
+  </script>
 </Layout>

@@ -47,9 +47,18 @@ const whyus = [
     description: 'Dedicated support to ensure your success with AI'
   }
 ];
+
+// SEO metadata
+const title = "NeuDayAI - Leading AI Innovation Company | AI Solutions for Business";
+const description = "NeuDayAI develops innovative AI solutions for businesses including automation, chatbots, workflow optimization, and custom AI development. Transform your business with our AI expertise.";
+const keywords = ["NeuDayAI", "AI Solutions", "Business AI", "AI Automation", "Chatbots", "Workflow Optimization", "Custom AI", "AI Development", "Pune"];
 ---
 
-<Layout title="NeuDayAI - Leading the AI Revolution">
+<Layout 
+  title={title}
+  description={description}
+  keywords={keywords}
+>
   <main>
     <!-- Hero Section -->
     <section 
@@ -83,12 +92,14 @@ const whyus = [
               href="https://calendly.com/amarjeet-neudayai" 
               target="_blank"
               class="bg-primary text-white px-8 py-4 rounded-full hover:bg-primary/90 transition-all transform hover:scale-105 hover:shadow-lg font-medium text-lg"
+              aria-label="Book a free AI consultation with NeuDayAI"
             >
               Book a Free Consultation
             </a>
             <a 
               href="/services" 
               class="bg-white text-primary px-8 py-4 rounded-full hover:bg-gray-50 transition-all transform hover:scale-105 hover:shadow-lg border-2 border-primary font-medium text-lg"
+              aria-label="Explore NeuDayAI's AI services"
             >
               Explore Services
             </a>
@@ -99,7 +110,7 @@ const whyus = [
     </section>
 
     <!-- Services Section -->
-    <section class="py-20">
+    <section class="py-20" id="services">
       <div class="container mx-auto px-4">
         <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
           <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Services</h2>
@@ -107,22 +118,25 @@ const whyus = [
             Comprehensive AI solutions designed to transform your business operations and drive growth
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" itemscope itemtype="https://schema.org/ItemList">
           {services.map((service, index) => (
-            <ServiceCard 
-              title={service.title}
-              description={service.description}
-              image={service.image}
-              learnmore={true}
-              delay={index * 100}
-            />
+            <div itemprop="itemListElement" itemscope itemtype="https://schema.org/Service">
+              <meta itemprop="position" content={`${index + 1}`} />
+              <ServiceCard 
+                title={service.title}
+                description={service.description}
+                image={service.image}
+                learnmore={true}
+                delay={index * 100}
+              />
+            </div>
           ))}
         </div>
       </div>
     </section>
 
      <!-- Why Choose Us Section -->
-    <section class="py-20">
+    <section class="py-20" id="why-choose-us">
       <div class="container mx-auto px-4">
         <h2 
           class="text-3xl md:text-4xl font-bold text-center mb-12"
@@ -130,21 +144,24 @@ const whyus = [
         >
         Why Choose NeuDayAI?
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" itemscope itemtype="https://schema.org/ItemList">
           {whyus.map((why, index) => (
-            <ServiceCard 
-              title={why.title}
-              description={why.description}
-              image={why.image}
-              learnmore={false}
-              delay={index * 100}
-            />
+            <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <meta itemprop="position" content={`${index + 1}`} />
+              <ServiceCard 
+                title={why.title}
+                description={why.description}
+                image={why.image}
+                learnmore={false}
+                delay={index * 100}
+              />
+            </div>
           ))}
         </div>
       </div>
     </section>
     <!-- CTA Section -->
-    <section class="py-20 bg-primary text-white">
+    <section class="py-20 bg-primary text-white" id="contact">
       <div class="container mx-auto px-4">
         <div 
           class="max-w-3xl mx-auto text-center"
@@ -160,6 +177,7 @@ const whyus = [
             href="https://calendly.com/amarjeet-neudayai" 
             target="_blank"
             class="inline-block bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition-colors"
+            aria-label="Book your free AI consultation with NeuDayAI"
           >
             Book Your Free Consultation
           </a>
@@ -167,4 +185,79 @@ const whyus = [
       </div>
     </section>
   </main>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "NeuDayAI - Leading AI Innovation Company",
+      "description": "NeuDayAI develops innovative AI solutions for businesses including automation, chatbots, workflow optimization, and custom AI development.",
+      "url": "https://www.neudayai.com",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", "p"]
+      },
+      "mainEntity": {
+        "@type": "Organization",
+        "@id": "https://www.neudayai.com/#organization",
+        "name": "NeuDayAI",
+        "url": "https://www.neudayai.com",
+        "logo": "https://www.neudayai.com/images/logo-horizontal-light.svg",
+        "slogan": "Leading the AI Revolution",
+        "description": "NeuDayAI develops innovative AI solutions for businesses including automation, chatbots, workflow optimization, and custom AI development.",
+        "foundingDate": "2023",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "604, Solitaire Paradise, Pink City Road, Wakad",
+          "addressLocality": "Pune",
+          "postalCode": "411057",
+          "addressCountry": "IN"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-8983142496",
+          "contactType": "customer service",
+          "email": "contact@neudayai.com"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "AI Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "AI Agents & Automation",
+                "description": "Custom AI agents to automate your business processes and workflows, increasing efficiency and reducing costs."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Chatbot Creation",
+                "description": "Intelligent chatbots for 24/7 customer support, lead generation, and automated customer service."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Workflow Automation",
+                "description": "AI-powered analysis and optimization of your business processes for maximum efficiency."
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Custom AI Development",
+                "description": "Tailored AI solutions designed specifically for your unique business needs and challenges."
+              }
+            }
+          ]
+        }
+      }
+    }
+  </script>
 </Layout>

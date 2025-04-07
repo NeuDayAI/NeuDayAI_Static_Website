@@ -2,7 +2,6 @@
 import Layout from '../../layouts/Layout.astro';
 import { services } from '../../data/services';
 
-
 export function getStaticPaths() {
   return services.map(service => ({
     params: { slug: service.title.toLowerCase().replace(/\s+/g, '-') },
@@ -12,20 +11,33 @@ export function getStaticPaths() {
 
 const { service } = Astro.props;
 const currentPath = Astro.url.pathname.replace(/\/$/, '');
+
+// Generate optimized SEO metadata for each service
+const title = `${service.title} - NeuDayAI | Innovative AI Solutions`;
+const description = service.description.length > 160 ? 
+  `${service.description.substring(0, 157)}...` : service.description;
+const keywords = [`${service.title}`, "AI Services", "AI Solutions", "NeuDayAI", "Custom AI", "Business AI", "Pune", "India"];
+
+// Define the canonical URL
+const canonicalUrl = `https://www.neudayai.com/service/${service.title.toLowerCase().replace(/\s+/g, '-')}`;
 ---
 
 <Layout 
-  title={`${service.title} - NeuDayAI Services`}
-  description={service.description}
+  title={title}
+  description={description}
+  keywords={keywords}
+  image={service.image}
+  canonicalURL={canonicalUrl}
+  pageType="article"
 >
-  <main class="pt-32">
+  <main class="pt-32" itemscope itemtype="https://schema.org/Service">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-8 max-w-7xl mx-auto">
         <!-- Side Navigation -->
         <div class="md:w-1/4">
           <div class="bg-white rounded-lg shadow-sm p-6 sticky top-32">
             <h2 class="text-lg font-semibold mb-4">Our Services</h2>
-            <nav class="space-y-2">
+            <nav class="space-y-2" aria-label="Services navigation">
               {services.map(item => {
                 const itemPath = `/service/${item.title.toLowerCase().replace(/\s+/g, '-')}`;
                 const isActive = currentPath === itemPath;
@@ -34,7 +46,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
                   <a
                     href={itemPath}
                     data-currentPath={currentPath}
-
+                    aria-current={isActive ? 'page' : undefined}
                     class:list={[
                       'block px-4 py-2 rounded-lg transition-colors',
                       {
@@ -57,22 +69,51 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
             <div class="h-64 overflow-hidden">
               <img 
                 src={service.image} 
-                alt={service.title}
+                alt={`${service.title} - NeuDayAI Service`}
                 class="w-full h-full object-cover"
+                itemprop="image"
               />
             </div>
             <div class="p-8">
-              <h1 class="text-3xl font-bold mb-6">{service.title}</h1>
-              <p class="text-lg text-gray-600 mb-8">{service.description}</p>
+              <nav aria-label="Breadcrumb" class="mb-4 text-sm">
+                <ol class="list-none p-0 inline-flex" itemscope itemtype="https://schema.org/BreadcrumbList">
+                  <li class="flex items-center" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/" itemprop="item" class="text-gray-500 hover:text-primary">
+                      <span itemprop="name">Home</span>
+                    </a>
+                    <meta itemprop="position" content="1" />
+                    <svg class="mx-2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                  <li class="flex items-center" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <a href="/services" itemprop="item" class="text-gray-500 hover:text-primary">
+                      <span itemprop="name">Services</span>
+                    </a>
+                    <meta itemprop="position" content="2" />
+                    <svg class="mx-2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </li>
+                  <li class="text-gray-700 font-medium" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <span itemprop="name">{service.title}</span>
+                    <meta itemprop="position" content="3" />
+                  </li>
+                </ol>
+              </nav>
+              
+              <h1 class="text-3xl font-bold mb-6" itemprop="name">{service.title}</h1>
+              <p class="text-lg text-gray-600 mb-8" itemprop="description">{service.description}</p>
 
               <h2 class="text-2xl font-semibold mb-6">Key Features</h2>
-              <div class="grid md:grid-cols-2 gap-4 mb-8">
-                {service.features.map(feature => (
-                  <div class="flex items-center space-x-3">
-                    <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="grid md:grid-cols-2 gap-4 mb-8" itemprop="hasOfferCatalog" itemscope itemtype="https://schema.org/OfferCatalog">
+                {service.features.map((feature, index) => (
+                  <div class="flex items-center space-x-3" itemprop="itemListElement" itemscope itemtype="https://schema.org/OfferCatalog">
+                    <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
-                    <span class="text-gray-700">{feature}</span>
+                    <span class="text-gray-700" itemprop="name">{feature}</span>
+                    <meta itemprop="position" content={index + 1} />
                   </div>
                 ))}
               </div>
@@ -87,7 +128,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
                     href="https://calendly.com/amarjeet-neudayai" 
                     target="_blank"
                     class="bg-primary text-white px-8 py-3 rounded-full hover:bg-primary/90 transition-colors whitespace-nowrap"
+                    aria-label={`Book a consultation for ${service.title}`}
+                    itemprop="potentialAction" itemscope itemtype="https://schema.org/ReserveAction"
                   >
+                    <meta itemprop="name" content="Book a Consultation" />
+                    <span itemprop="target" itemscope itemtype="https://schema.org/EntryPoint">
+                      <meta itemprop="urlTemplate" content="https://calendly.com/amarjeet-neudayai" />
+                    </span>
                     Book a Consultation
                   </a>
                 </div>
@@ -98,4 +145,40 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '');
       </div>
     </div>
   </main>
+  
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.title,
+    "description": service.description,
+    "provider": {
+      "@type": "Organization",
+      "name": "NeuDayAI",
+      "@id": "https://www.neudayai.com/#organization"
+    },
+    "serviceType": "AI Solution",
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "18.5793",
+        "longitude": "73.7806"
+      },
+      "geoRadius": "10000"
+    },
+    "url": canonicalUrl,
+    "image": `https://www.neudayai.com${service.image}`,
+    "additionalType": "https://www.wikidata.org/wiki/Q11660",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "availabilityStarts": "2023-01-01T00:00:00+05:30",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "priceCurrency": "INR",
+        "price": "Custom pricing based on requirements"
+      }
+    }
+  })}>
+  </script>
 </Layout>

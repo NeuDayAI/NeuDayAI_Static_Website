@@ -2,11 +2,18 @@
 import Layout from '../layouts/Layout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import { services } from '../data/services';
+
+// SEO metadata
+const title = "AI Services - NeuDayAI | Intelligent Business Solutions";
+const description = "Discover NeuDayAI's comprehensive AI services including AI agents, chatbots, workflow automation, document processing, and custom AI development solutions for your business.";
+const keywords = ["AI Services", "AI Development", "Chatbot Solutions", "Workflow Automation", "Business AI", "Document Processing", "NeuDayAI Services", "AI Consulting", "Pune", "India"];
 ---
 
 <Layout 
-  title="Services - NeuDayAI"
-  description="Explore NeuDayAI's comprehensive AI services and solutions"
+  title={title}
+  description={description}
+  keywords={keywords}
+  image="/images/services-hero.jpg"
 >
   <main>
     <!-- Hero Section -->
@@ -36,7 +43,7 @@ import { services } from '../data/services';
     </section>
 
     <!-- Services Grid -->
-    <section class="py-20">
+    <section class="py-20" id="services-grid">
       <div class="container mx-auto px-4">
         <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
@@ -53,7 +60,7 @@ import { services } from '../data/services';
     </section>
 
     <!-- Process Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-gray-50" id="our-process">
       <div class="container mx-auto px-4">
         <h2 
           class="text-3xl md:text-4xl font-bold text-center mb-12"
@@ -103,7 +110,7 @@ import { services } from '../data/services';
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-primary text-white">
+    <section class="py-20 bg-primary text-white" id="services-cta">
       <div class="container mx-auto px-4">
         <div 
           class="max-w-3xl mx-auto text-center"
@@ -119,6 +126,7 @@ import { services } from '../data/services';
             href="https://calendly.com/amarjeet-neudayai" 
             target="_blank"
             class="inline-block bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 transition-colors"
+            aria-label="Book a consultation about our AI services"
           >
             Book Your Consultation
           </a>
@@ -126,4 +134,80 @@ import { services } from '../data/services';
       </div>
     </section>
   </main>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AI Services - NeuDayAI",
+      "description": "Comprehensive AI solutions to transform your business",
+      "url": "https://www.neudayai.com/services",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.neudayai.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://www.neudayai.com/services"
+          }
+        ]
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "Service",
+            "position": 1,
+            "name": "AI Agents & Automation",
+            "url": "https://www.neudayai.com/service/ai-agents-&-automation",
+            "description": "Custom AI agents to automate your business processes and workflows, increasing efficiency and reducing costs.",
+            "provider": {
+              "@type": "Organization",
+              "name": "NeuDayAI"
+            }
+          },
+          {
+            "@type": "Service",
+            "position": 2,
+            "name": "Chatbot Creation",
+            "url": "https://www.neudayai.com/service/chatbot-creation",
+            "description": "Intelligent chatbots for 24/7 customer support, lead generation, and automated customer service.",
+            "provider": {
+              "@type": "Organization",
+              "name": "NeuDayAI"
+            }
+          },
+          {
+            "@type": "Service",
+            "position": 3,
+            "name": "Workflow Automation",
+            "url": "https://www.neudayai.com/service/workflow-automation",
+            "description": "AI-powered analysis and optimization of your business processes for maximum efficiency.",
+            "provider": {
+              "@type": "Organization",
+              "name": "NeuDayAI"
+            }
+          },
+          {
+            "@type": "Service",
+            "position": 4,
+            "name": "Custom AI Development",
+            "url": "https://www.neudayai.com/service/custom-ai-development",
+            "description": "Tailored AI solutions designed specifically for your unique business needs and challenges.",
+            "provider": {
+              "@type": "Organization",
+              "name": "NeuDayAI"
+            }
+          }
+        ]
+      }
+    }
+  </script>
 </Layout>

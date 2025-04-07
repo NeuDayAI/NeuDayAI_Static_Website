@@ -7,9 +7,25 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  keywords?: string[];
+  image?: string;
+  canonicalURL?: string;
+  pageType?: string;
 }
 
-const { title, description = "NeuDayAI - Leading the AI Revolution" } = Astro.props;
+const { 
+  title = "NeuDayAI - Leading the AI Revolution", 
+  description = "NeuDayAI helps businesses transform with innovative AI solutions for automation, chatbots, insights, and custom development. Based in Pune, India.",
+  keywords = ["AI Solutions", "Business AI", "AI Automation", "Chatbots", "AI Development", "NeuDayAI", "Pune"],
+  image = "/images/hero1.jpeg",
+  canonicalURL,
+  pageType = "website"
+} = Astro.props;
+
+// Get the current URL
+const currentURL = Astro.url.href;
+const finalCanonicalURL = canonicalURL || currentURL;
+const finalImage = image.startsWith('http') ? image : `https://www.neudayai.com${image}`;
 ---
 
 <!doctype html>
@@ -20,7 +36,70 @@ const { title, description = "NeuDayAI - Leading the AI Revolution" } = Astro.pr
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.jpg" />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords.join(', ')} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={finalCanonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={pageType} />
+    <meta property="og:url" content={finalCanonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={finalImage} />
+    <meta property="og:site_name" content="NeuDayAI" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={finalCanonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={finalImage} />
+    
+    <!-- Additional SEO Tags -->
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="author" content="NeuDayAI Technologies Pvt. Ltd." />
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.jpg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.jpg" />
+    
+    <!-- Structured Data for Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "NeuDayAI",
+        "url": "https://www.neudayai.com",
+        "logo": "https://www.neudayai.com/images/logo-horizontal-light.svg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-8983142496",
+          "contactType": "customer service"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "604, Solitaire Paradise, Pink City Road, Wakad",
+          "addressLocality": "Pune",
+          "postalCode": "411057",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/neudayai",
+          "https://x.com/neudayai",
+          "https://www.facebook.com/profile.php?id=61561865010204",
+          "https://www.instagram.com/neudayai/"
+        ]
+      }
+    </script>
   </head>
   <body class="font-sans" style="background-color: #ffffff;">
     <Header />
