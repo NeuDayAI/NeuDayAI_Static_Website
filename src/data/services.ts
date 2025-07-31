@@ -134,4 +134,31 @@ export const services = [
       'Troubleshooting Support'
     ]
   },
+  {
+    title: 'WhatsApp Marketing & Communications',
+    description: 'Transform your business communication with our comprehensive WhatsApp Business Platform. Automate customer support, send personalized marketing campaigns, manage orders, and create rich interactive experiences. Our platform enables businesses to leverage WhatsApp\'s 2+ billion user base through automated workflows, broadcast messaging, catalog integration, and intelligent chatbot responses for sales, support, and customer engagement.',
+    image: '/images/whatsapp-marketing.jpg',
+    features: [
+      'Automated Marketing Campaigns',
+      'Broadcast Messaging',
+      'Interactive Message Templates',
+      'Rich Media Support (Images, Videos, Documents)',
+      'Customer Segmentation & Targeting',
+      'WhatsApp Business API Integration',
+      'Analytics & Performance Reporting',
+      'Multi-agent Customer Support',
+      'Workflow Automation & Triggers',
+      'CRM Integration & Sync',
+      'Product Catalog Management',
+      'Payment Gateway Integration',
+      'Appointment Scheduling System',
+      'Order Management & Tracking',
+      'Customer Support Automation',
+      'Bulk Messaging Solutions',
+      'Click-to-Chat Integration',
+      'QR Code Generation',
+      'Lead Generation & Qualification',
+      'Feedback Collection & Surveys'
+    ]
+  },
 ];
